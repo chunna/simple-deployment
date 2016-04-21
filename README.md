@@ -270,7 +270,7 @@ sudo semodule -i mynginx.pp
 
 The changes should take effect immediately, so a webserver restart shouldn't be necessary. We then test it out by requesting the website with `curl` again, and pipe the output into *status.txt*. 
 
-Since the app is supposed to return the text "Hellow World!", we can check the contents of *status.txt* to verify whether it matches what we expect to see. If the file contains the string "Hello World!", then we can verify that it is working.
+Since the app is supposed to return the text "Hello World!", we can check the contents of *status.txt* to verify whether it matches what we expect to see. If the file contains the string "Hello World!", then we can verify that it is working.
 
 *deploy-5-finalise.sh*
 ```sh
