@@ -167,10 +167,10 @@ sudo curl --fail -sSLo /etc/yum.repos.d/passenger.repo https://oss-binaries.phus
 
 sudo yum install -y nginx passenger
 ```
->The simple Sinatra app I will be deploying can actually be delivered via WEBrick. However, I have chosen to host it using Nginx as the web server and Passenger as the app server, because it represents a more realistic deployment, and is also more scalable and resilient.
+>The simple Sinatra app we will be deploying can actually be delivered via WEBrick. However, I have chosen to host it using Nginx as the web server and Passenger as the app server, because it represents a more realistic deployment, and is also more scalable and resilient.
 
 ####Configure Passenger
-In order to configure Passenger, we need to uncomment three lines in the Passenger configuration file - sed comes in handy for this.
+In order to configure Passenger, we need to uncomment three lines in the Passenger configuration file - `sed` comes in handy for this.
 
 *deploy-3-nginx.sh*
 ```sh
@@ -178,6 +178,8 @@ sudo sed -i "s/"#passenger_root"/"passenger_root"/g" /etc/nginx/conf.d/passenger
 sudo sed -i "s/"#passenger_ruby"/"passenger_ruby"/g" /etc/nginx/conf.d/passenger.conf
 sudo sed -i "s/"#passenger_instance_registry_dir"/"passenger_instance_registry_dir"/g" /etc/nginx/conf.d/passenger.conf
 ```
+>Here we could probably achieve the same with just one line of code: `sudo sed -i "s/"#passenger_"/"passenger_"/g" /etc/nginx/conf.d/passenger.conf`, however I have chosen to be more explicit in case other similar lines appear in the configuration file.
+
 For security best practice, we will create a new user account used for running the app. We will call the account `sinatraapp`.
 
 *deploy-3-nginx.sh*
@@ -268,7 +270,7 @@ sudo semodule -i mynginx.pp
 
 The changes should take effect immediately, so a webserver restart shouldn't be necessary. We then test it out by requesting the website with `curl` again, and pipe the output into *status.txt*. 
 
-Since the app is supposed to return the text "Hellow World!", we can check the contents of *status.txt* to verify whether it matches what we expect to see. If the contents of the file contains "Hello World!", then we can verify that it is working.
+Since the app is supposed to return the text "Hellow World!", we can check the contents of *status.txt* to verify whether it matches what we expect to see. If the file contains the string "Hello World!", then we can verify that it is working.
 
 *deploy-5-finalise.sh*
 ```sh
