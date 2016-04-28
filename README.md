@@ -19,6 +19,8 @@ OpenSSH is generally available on most platforms by default. If not, check your 
 
 Additionally, you will need an account on AWS. If you don't currently have one, you can sign up for an account at [Amazon's AWS portal](https://aws.amazon.com/ "https://aws.amazon.com/"). The deployed instance (t2.micro) qualifies for Amazon's free tier, so no costs are necessary to see this in action.
 
+Finally, in order for the script to run without user interaction, you will need to have an existing subscription to the CentOS 7 x86_64 image from the AWS Marketplace. Running the script without this subscription will prompt you to accept the terms and conditions before you can proceed. You can add the subscription prior to using this script at the following [link](https://aws.amazon.com/marketplace/pp/B00O7WM7QW "https://aws.amazon.com/marketplace/pp/B00O7WM7QW").
+
 ##Installation
 Ensure you have the AWS CLI tools installed and configured with an appropriate Access Key tied to your AWS account. For more information about configuring the AWS Command Line Interface, follow the guide for [Getting Set Up](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html).
 
@@ -61,7 +63,7 @@ I'll explain in more detail how the script does this below.
 ###Provision an EC2 instance
 There are a few things to be aware of when we provision the new EC2 instance. I have chosen to deploy this in the `ap-southeast-2` region simply because it is the closest to my location. If you are located closer to another region on Amazon's infrastructure, I recommend you specify that region in the `--region` argument instead.
 
-Secondly, I have chosen to use CentOS because I am more familiar with that distribution of Linux. If you prefer using Amazon Linux, Ubuntu or another distribution of Linux, then you will need to find the corresponding Product Code for that distribution on the AWS Marketplace, and use that instead of the product code used in the script: `aw0evgkw8e5c1q413zgy5pjce`.
+Secondly, I have chosen to use CentOS because I am more familiar with that distribution of Linux. If you prefer using Amazon Linux, Ubuntu or another distribution of Linux, then you will need to find the corresponding Product Code for that distribution on the AWS Marketplace, and use that instead of the product code used in the script: `aw0evgkw8e5c1q413zgy5pjce`
 
 *deploy-1-instance.sh*
 ```sh
